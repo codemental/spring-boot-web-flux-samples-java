@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="com.bmw.cd.logging">
+
+    <Properties>
+        <Property name="path">target</Property>
+        <Property name="logFileName">integration-tests-logs</Property>
+        <Property name="logPattern">%d{HH:mm:ss,SSS} %-5.5p %28.28c{2}| %m%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${logPattern}"/>
+        </Console>
+        <File name="logfile" fileName="${path}/${logFileName}.log" append="true">
+            <PatternLayout pattern="${logPattern}"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="logfile"/>
+        </Root>
+        <Logger name="org.eclipse.jetty" level="INFO" additivity="false">
+            <AppenderRef ref="console"/>
+        </Logger>
+    </Loggers>
+</Configuration>

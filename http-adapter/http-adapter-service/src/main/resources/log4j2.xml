@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="5">
+
+    <Properties>
+        <Property name="path">../target/logs</Property>
+        <Property name="prefix">http_adapter</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss,SSS} %-5.5p %28.28c{2}| %m%n"/>
+        </Console>
+
+        <RollingFile name="RollingFile" fileName="${path}/${prefix}_${date:yyyy-MM-dd}.0.log"
+                     filePattern="${path}/${prefix}_%d{yyyy-MM-dd}.%i.log" append="true">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %level %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+        <Logger name="samples.webflux" level="DEBUG" additivity="false">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+        <Logger name="org.springframework" level="INFO" additivity="false">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+        <Logger name="io.netty" level="INFO" additivity="false">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+    </Loggers>
+</Configuration>

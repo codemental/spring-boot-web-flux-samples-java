@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.codemental.samples.webflux.java</groupId>
+    <artifactId>spring-boot-web-flux-samples-java</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <modules>
+        <module>http-adapter</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <spring.boot.version>2.0.0.RELEASE</spring.boot.version>
+        <netty.transport.native.epoll.version>4.1.16.Final</netty.transport.native.epoll.version>
+        <citrus.version>2.7.3</citrus.version>
+        <testng.version>6.13.1</testng.version>
+
+        <!-- Maven Plugins -->
+        <maven.enforcer.plugin.version>3.0.0-M1</maven.enforcer.plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import only dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-reactor-netty</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-transport-native-epoll</artifactId>
+                <version>${netty.transport.native.epoll.version}</version>
+                <classifier>linux-x86_64</classifier>
+            </dependency>
+
+            <dependency>
+                <groupId>org.codemental.samples.webflux.java.http.adapter</groupId>
+                <artifactId>http-adapter-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.consol.citrus</groupId>
+                <artifactId>citrus-core</artifactId>
+                <version>${citrus.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.consol.citrus</groupId>
+                <artifactId>citrus-java-dsl</artifactId>
+                <version>${citrus.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.consol.citrus</groupId>
+                <artifactId>citrus-http</artifactId>
+                <version>${citrus.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                    <configuration>
+                        <workingDirectory>src</workingDirectory>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven.enforcer.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>enforce</id>
+                            <configuration>
+                                <rules>
+                                    <dependencyConvergence/>
+                                </rules>
+                            </configuration>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
