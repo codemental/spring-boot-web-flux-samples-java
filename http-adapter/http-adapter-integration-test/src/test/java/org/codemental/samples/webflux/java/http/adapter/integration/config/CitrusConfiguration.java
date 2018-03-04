@@ -36,7 +36,7 @@ public class CitrusConfiguration {
                 .server()
                 .port(externalApiMockPort)
                 .autoStart(true)
-                .timeout(5000)
+                .timeout(10000)
                 .build();
     }
 }

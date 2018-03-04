@@ -1,4 +1,10 @@
 external:
+  channel:
+    connection:
+      timeout: 1000
+    request:
+      timeout: 3000
+
   api:
     url: http://localhost:9090
 

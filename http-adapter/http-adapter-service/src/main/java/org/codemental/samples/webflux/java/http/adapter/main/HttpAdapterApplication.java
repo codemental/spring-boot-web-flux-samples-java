@@ -11,7 +11,7 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @EnableAutoConfiguration
 @EnableWebFlux
 @Profile({"default"})
-@Import({HttpConfiguration.class})
+@Import({ErrorHandlingConfiguration.class, HttpConfiguration.class})
 public class HttpAdapterApplication {
 
     public static void main(String[] args) {
