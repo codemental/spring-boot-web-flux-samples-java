@@ -1,0 +1,17 @@
+datasource:
+  jdbc-url: jdbc:postgresql://localhost:5432/jooq_notx_db?currentSchema=jooq_notx_db
+  username: webflux_samples_user
+  password: webflux
+  maximum-pool-size: 10
+
+logging:
+  config: classpath:log4j2.xml
+
+server:
+  port: 8080
+  
+spring:
+  jackson:
+    date-format: "YYYY-MM-dd"
+    serialization:
+      write_dates_as_timestamps: false

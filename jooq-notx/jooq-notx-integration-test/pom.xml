@@ -3,18 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>org.codemental.samples.webflux.java.http.adapter</groupId>
-        <artifactId>http-adapter</artifactId>
+        <groupId>org.codemental.samples.webflux.java.jooq.notx</groupId>
+        <artifactId>jooq-notx</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>http-adapter-integration-test</artifactId>
+    <artifactId>jooq-notx-integration-test</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>org.codemental.samples.webflux.java.http.adapter</groupId>
-            <artifactId>http-adapter-service</artifactId>
+            <groupId>org.codemental.samples.webflux.java.jooq.notx</groupId>
+            <artifactId>jooq-notx-service</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.consol.citrus</groupId>
@@ -31,6 +32,10 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -90,7 +95,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>org.codemental.samples.webflux.java.jooq.adapter.main.HttpAdapterApplication</mainClass>
+                    <mainClass>org.codemental.samples.webflux.java.jooq.notx.main.JooqNoTxApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

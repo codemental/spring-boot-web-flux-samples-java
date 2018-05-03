@@ -10,6 +10,7 @@
 
     <modules>
         <module>http-adapter</module>
+        <module>jooq-notx</module>
     </modules>
 
     <properties>
@@ -19,11 +20,15 @@
 
         <spring.boot.version>2.0.0.RELEASE</spring.boot.version>
         <netty.transport.native.epoll.version>4.1.16.Final</netty.transport.native.epoll.version>
-        <citrus.version>2.7.3</citrus.version>
+        <citrus.version>2.7.4</citrus.version>
         <testng.version>6.13.1</testng.version>
+        <apache.dbcp.version>1.4</apache.dbcp.version>
 
         <!-- Maven Plugins -->
         <maven.enforcer.plugin.version>3.0.0-M1</maven.enforcer.plugin.version>
+        <maven.flyway.plugin.version>5.0.7</maven.flyway.plugin.version>
+        <postgresql.driver.version>42.2.1</postgresql.driver.version>
+        <jooq.plugin.version>3.10.5</jooq.plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -76,6 +81,12 @@
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>${testng.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>${apache.dbcp.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
