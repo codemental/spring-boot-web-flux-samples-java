@@ -10,7 +10,7 @@ Sample of an HTTP integration service between a client using one API and a backe
 
 `mvn clean install`
 
-### jooq-notx
+### jooq-notx - work in progress
 Sample service that uses jOOQ to query a postgres database. Database access is non-transactional (for now).
 
 ##### Setup
